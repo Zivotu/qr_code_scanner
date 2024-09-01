@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'net.touchcapture.qr.flutterqr'  // Dodato direktno kao namespace
+    namespace 'net.touchcapture.qr.flutterqr'
     compileSdk 33
 
     sourceSets {
@@ -39,8 +39,15 @@ android {
         multiDexEnabled true
     }
 
+    // Postavljanje JVM Toolchain-a
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(11) // Ili 17, prema potrebi
+        }
+    }
+
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '11' // Ovdje također možete postaviti '17' ako koristite Kotlin 17.
     }
 
     compileOptions {
